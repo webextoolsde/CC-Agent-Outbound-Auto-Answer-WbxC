@@ -17,14 +17,14 @@ customElements.define(
   async connectedCallback() 
   {
     this.init(); 
-    logger.info('Headless Widget Log: Webcomponent connectedCallback function');
+    logger.info('ccagent_out-aa Log: Webcomponent connectedCallback function');
   }
   
   // Init Method - called to configure the WebexCC Desktop JS SDK inside the headless widget
   async init() 
   {  
     await Desktop.config.init();
-    logger.info('Headless Widget Log: init function');
+    logger.info('ccagent_out-aa Log: init function');
     this.registerEventListeners();
     //this.detectlocked();
   }
@@ -35,7 +35,7 @@ customElements.define(
   {
     // Listener for agent contact offered event
     Desktop.agentContact.addEventListener('eAgentOfferContact', (agentContact) => {
-      logger.info('Headless Widget Log: Agent Offered Contact' +agentContact.data['interaction'].callAssociatedDetails.ani);
+      logger.info('ccagent_out-aa Log: Agent Offered Contact' +agentContact.data['interaction'].callAssociatedDetails.ani);
       autoanswer(agentContact);
     });
   } 	
@@ -43,14 +43,16 @@ customElements.define(
 
 async function getToken(){
     const actoken = await Desktop.actions.getToken();
-    logger.info("agent-history", "getToken" +actoken);
+    logger.info("ccagent_out-aa", "getToken" +actoken);
     // Versuche Token aus dem Desktop SDK zu holen, fallback auf bottoken-Konstante
     
     return actoken;
   }
 
 async function autoanswer(agentContact){
-            logger.info('Auto Answer' +agentContact);
+  logger.info('ccagent_out-aa' +agentContact.data.interaction.contactDirection.type);
+    if(agentContact.data.interaction.contactDirection.type === "OUTBOUND"){
+      logger.info('ccagent_out-aa' +JSON.stringify(agentContact));
             let token = await getToken();
             var URL = "https://webexapis.com/v1/telephony/calls";
             const response1 = await fetch(URL, {
@@ -68,6 +70,8 @@ async function autoanswer(agentContact){
             });
             const userstatus1 = await response11.json();
             console.log(userstatus1);
+    }
+            
 }
 
 
