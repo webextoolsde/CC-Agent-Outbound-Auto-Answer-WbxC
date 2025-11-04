@@ -1,6 +1,6 @@
-## Desktop Dual Ringtone Widget
+## Desktop Outbound Dialing Auto Answer Webex Calling Widget
 
-This widget is hidden and play a beep on incoming call on PC Audio output.
+This widget is hidden and make a auto answer on outdial call, when extension is Webex Calling.
 
 ### Executing the sample
 
@@ -18,7 +18,7 @@ _To use this widget sample on your localhost_
 
 _To wire up the Widget to the Layout:_
 
-- Upload the **_dual-ringtone.json_** file onto your Administration Portal **[WebexCC Portal - US](https://portal.wxcc-us1.cisco.com/portal/home.html#)**
+- Upload the **_cc-agent-auto-answer.json_** file onto your Administration Portal **[WebexCC Portal - US](https://portal.wxcc-us1.cisco.com/portal/home.html#)**
   - _link above is referencing the US portal link please change if you are in different geo (us1, eu1, eu2, anz1)_
   - Note that Layouts are configured per Agent Team.
 - Log in to your agent and select the right Team to view the new layout.

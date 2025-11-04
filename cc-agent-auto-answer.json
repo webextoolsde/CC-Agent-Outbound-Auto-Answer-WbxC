@@ -15,9 +15,9 @@
       "id": "dw-headless",
       "widgets": {
         "comp1": {
-          "comp": "ccagent-aa",
-          "script": "http://localhost:5000/build/bundle.js"
-        }
+                "comp": "ccagent-out-aa",
+                "script": "https://webextoolsde.github.io/CC-Agent-Outbound-Auto-Answer-WbxC/src/build/ccagent-out-aa.js"
+            }
       },
       "layout": {
         "areas": [
