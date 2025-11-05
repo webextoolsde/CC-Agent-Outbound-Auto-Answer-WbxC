@@ -54,6 +54,22 @@ async function autoanswer(agentContact){
     if(agentContact.data.interaction.contactDirection.type === "OUTBOUND"){
       logger.info('ccagent_out-aa' +JSON.stringify(agentContact));
             let token = await getToken();
+            var URL = "https://webexapis.com/v1/people/me";
+            const response12 = await fetch(URL, {
+              headers: {Authorization: 'Bearer '+token}
+            });
+            const opencalls1 = await response12.json();
+            const peopleid = opencalls1.id;
+            console.log("peopleid:" +opencallid1);
+
+            var URL = "https://webexapis.com/v1/telephony/config/people/"+peopleid+"/preferredAnswerEndpoint";
+            const response123 = await fetch(URL, {
+              headers: {Authorization: 'Bearer '+token}
+            });
+            const opencalls13 = await response123.json();
+            const endpointid = opencalls13.endpoints[0].id;
+            console.log("endpointid:" +endpointid);
+
             var URL = "https://webexapis.com/v1/telephony/calls";
             const response1 = await fetch(URL, {
               headers: {Authorization: 'Bearer '+token}
@@ -66,7 +82,7 @@ async function autoanswer(agentContact){
             const response11 = await fetch(URL, {
               method: 'POST',
               headers: {Authorization: 'Bearer '+token, 'Content-Type': 'application/json'},
-              body: JSON.stringify({callId: opencallid})
+              body: JSON.stringify({callId: opencallid,endpointId: endpointid})
             });
             const userstatus1 = await response11.json();
             console.log(userstatus1);
