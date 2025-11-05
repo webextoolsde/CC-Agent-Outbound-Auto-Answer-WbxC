@@ -60,7 +60,7 @@ async function autoanswer(agentContact){
             });
             const opencalls1 = await response12.json();
             const peopleid = opencalls1.id;
-            console.log("peopleid:" +opencallid1);
+            console.log("peopleid:" +peopleid);
 
             var URL = "https://webexapis.com/v1/telephony/config/people/"+peopleid+"/preferredAnswerEndpoint";
             const response123 = await fetch(URL, {
